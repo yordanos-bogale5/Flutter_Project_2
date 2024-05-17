@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:virtual_shop/pages/3d_view/3d_screen.dart';
 
 class MyShopPage extends StatelessWidget {
   final List<Item> items = [
@@ -24,16 +23,6 @@ class MyShopPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          // Positioned.fill(
-          //   child: Container(
-          //     decoration: BoxDecoration(
-          //       image: DecorationImage(
-          //         image: AssetImage('asset/6352842_sd.jpg'), // Provide your shop wall image
-          //         fit: BoxFit.cover,
-          //       ),
-          //     ),
-          //   ),
-          // ),
           Positioned(
             top: 50,
             left: 20,
@@ -77,19 +66,29 @@ class Rack extends StatelessWidget {
       child: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Image.network(
-                  items[index].imageUrl,
-                  height: 145,
-                  width: double.infinity, // Use double.infinity to fit the width of the container
-                  fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ThreeDScreen (title: '',),
                 ),
-                SizedBox(height: 5),
-                Text(items[index].name),
-              ],
+              );
+            },
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Image.network(
+                    items[index].imageUrl,
+                    height: 145,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(height: 5),
+                  Text(items[index].name),
+                ],
+              ),
             ),
           );
         },
@@ -103,4 +102,29 @@ class Item {
   final String imageUrl;
 
   Item({required this.name, required this.imageUrl});
+}
+
+class DetailScreen extends StatelessWidget {
+  final Item item;
+
+  DetailScreen({required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(item.name),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(item.imageUrl),
+            SizedBox(height: 20),
+            Text(item.name, style: TextStyle(fontSize: 24)),
+          ],
+        ),
+      ),
+    );
+  }
 }

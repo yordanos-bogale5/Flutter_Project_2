@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
   curved_navigation_bar: ^1.0.3
+  babylonjs_viewer: ^1.2.0
+  webview_flutter: ^2.8.0
 
 
 dev_dependencies:
@@ -69,6 +71,7 @@ flutter:
     - assets/photo_4_2024-05-16_14-20-52.jpg
     - assets/photo_2024-05-17_01-43-49.jpg
     - assets/photo_2024-05-17_01-55-14.jpg
+    - assets/laptop.glb
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
