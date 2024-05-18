@@ -18,7 +18,16 @@ class _ThreeDScreenState extends State<ThreeDScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: 
+     const Text(
+        'View in 3D',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      
+    ),
       ),
       body: Column(
         children: [
@@ -44,13 +53,21 @@ class _ThreeDScreenState extends State<ThreeDScreen> {
             onPressed: () {
               _controller?.runJavascript('sayHello();');
             },
-            child: const Text("Run Function"),
+            child: const Text("Add to Cart"),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue.withOpacity(0.5),
+              foregroundColor: Colors.white,
+            ),
           ),
           ElevatedButton(
             onPressed: () {
               _controller?.runJavascript('toggleAutoRotate();');
             },
-            child: const Text("Toggle Auto Rotate"),
+            child:  const Text("Add to favorites"),
+            style: ElevatedButton.styleFrom(
+               backgroundColor: Colors.blue.withOpacity(0.5),
+              foregroundColor: Colors.white,
+            ),
           ),
         ],
       ),

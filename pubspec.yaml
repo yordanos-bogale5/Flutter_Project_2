@@ -38,6 +38,7 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   babylonjs_viewer: ^1.2.0
   webview_flutter: ^2.8.0
+  carousel_slider: ^4.2.1
 
 
 dev_dependencies:
@@ -72,6 +73,7 @@ flutter:
     - assets/photo_2024-05-17_01-43-49.jpg
     - assets/photo_2024-05-17_01-55-14.jpg
     - assets/laptop.glb
+    - assets/photo_2024-05-17_13-00-18.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

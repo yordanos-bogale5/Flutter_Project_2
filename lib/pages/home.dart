@@ -4,7 +4,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:virtual_shop/pages/shop_openning/second.dart';
 import 'package:virtual_shop/widget/items_widget.dart';
 
-
+import 'all_shops/shops.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -234,6 +234,11 @@ class _HomePageState extends State<HomePage> {
                       'https://www.classicfootballshirts.co.uk/cdn-cgi/image/fit=pad,q=70,f=webp//pub/media/catalog/product//4/0/4065424487796-1_1.jpg',
                       'Sport Clothes', 
                     ),
+                      const SizedBox(width: 10),
+                    _buildShopCategory(
+                      'https://ariftibeb.com/cdn/shop/products/IMG_E9859_480x480.jpg?v=1653200020',
+                      'Fashion',
+                    ),
                   ],
                 ),
               ),
@@ -258,17 +263,68 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: CurvedNavigationBar(
-        items: const [
-          Icon(Icons.home, size: 30),
-          Icon(Icons.shop, size: 30),
-          Icon(Icons.shopping_cart, size: 30),
-          Icon(Icons.person, size: 30),
-        ],
-        onTap: (index) {
-          // Handle navigation based on index
-        },
-      ),
+     bottomNavigationBar: CurvedNavigationBar(
+  items: const [
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.home, size: 30),
+        Text('Home', style: TextStyle(fontSize: 12)),
+      ],
+    ),
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.shop, size: 30),
+        Text('All Shops', style: TextStyle(fontSize: 12)),
+      ],
+    ),
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.shopping_cart, size: 30),
+        Text('Cart', style: TextStyle(fontSize: 12)),
+      ],
+    ),
+    Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.person, size: 30),
+        Text('Profile', style: TextStyle(fontSize: 12)),
+      ],
+    ),
+  ],
+  onTap: (index) {
+    // Handle navigation based on index
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShopScreen()),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShopScreen()),
+        );
+        break;
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShopScreen()),
+        );
+        break;
+    }
+  },
+),
+
     );
   }
 }
