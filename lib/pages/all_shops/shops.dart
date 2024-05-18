@@ -46,7 +46,7 @@ class _ShopScreenState extends State<ShopScreen> {
     'https://i5.walmartimages.com/seo/HP-Stream-14-Laptop-Intel-Celeron-N4000-4GB-SDRAM-32GB-eMMC-Office-365-1-yr-Royal-Blue_4f941fe6-0cf3-42af-a06c-7532138492fc_2.cb8e85270e731cb1ef85d431e49f0bf2.jpeg'
   ];
 
-  final List<String> smallTexts = List.generate(15, (index) => 'Text ${index + 1}');
+  final List<String> smallTexts = List.generate(15, (index) => 'Shop ${index + 1}');
 
   int currentIndex = 0;
   int selectedCategoryIndex = 0;
@@ -180,8 +180,8 @@ class _ShopScreenState extends State<ShopScreen> {
             thickness: 1,
             color: Color.fromRGBO(238, 238, 238, 1),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -216,7 +216,7 @@ class _ShopScreenState extends State<ShopScreen> {
                       child: GridView.count(
                         crossAxisCount: 2,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         children: List.generate(smallTexts.length, (index) {
                           return Padding(
                             padding: const EdgeInsets.all(14.0),
@@ -234,10 +234,10 @@ class _ShopScreenState extends State<ShopScreen> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                                 Text(
                                   smallTexts[index],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),

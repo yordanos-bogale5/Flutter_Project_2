@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_shop/pages/shop_openning/third.dart';
+import 'package:virtual_shop/pages/shop_openning/forth.dart';
 
-class MultiSelectScreen extends StatefulWidget {
-  const MultiSelectScreen({super.key});
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({super.key});
 
   @override
-  _MultiSelectScreenState createState() => _MultiSelectScreenState();
+  _ThirdScreenState createState() => _ThirdScreenState();
 }
 
-class _MultiSelectScreenState extends State<MultiSelectScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   final List<bool> _selections = List.generate(6, (index) => false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Where would you like to sell?'),
+        title: const Text('What do you plan to sell first?'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -27,13 +27,13 @@ class _MultiSelectScreenState extends State<MultiSelectScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Pick as many as you like – you can always change these later. We\'ll make sure you\'re set up to sell in these places.',
+                      'Pick what you want to start with. We’ll help you stock your store.',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 20),
                     SelectableOption(
-                      title: 'An online store',
-                      description: 'Create a virtual shop',
+                      title: 'Products I buy or make myself',
+                      description: 'Shipped by me',
                       isSelected: _selections[0],
                       onChanged: (value) {
                         setState(() {
@@ -43,8 +43,8 @@ class _MultiSelectScreenState extends State<MultiSelectScreen> {
                     ),
                     const SizedBox(height: 10),
                     SelectableOption(
-                      title: 'In person',
-                      description: 'Sell at retail stores, pop-ups, or other physical locations',
+                      title: 'Digital products',
+                      description: ' digital art, NFTs',
                       isSelected: _selections[1],
                       onChanged: (value) {
                         setState(() {
@@ -53,41 +53,41 @@ class _MultiSelectScreenState extends State<MultiSelectScreen> {
                       },
                     ),
                     const SizedBox(height: 10),
-                    // SelectableOption(
-                    //   title: 'An existing website or blog',
-                    //   description: 'Add a Buy Button to your website',
-                    //   isSelected: _selections[2],
-                    //   onChanged: (value) {
-                    //     setState(() {
-                    //       _selections[2] = value!;
-                    //     });
-                    //   },
-                    // ),
-                    // const SizedBox(height: 10),
-                    // SelectableOption(
-                    //   title: 'Social media',
-                    //   description: 'Reach customers on Facebook, Instagram, TikTok, and more',
-                    //   isSelected: _selections[3],
-                    //   onChanged: (value) {
-                    //     setState(() {
-                    //       _selections[3] = value!;
-                    //     });
-                    //   },
-                    // ),
-                    // const SizedBox(height: 10),
-                    // SelectableOption(
-                    //   title: 'Online marketplaces',
-                    //   description: 'List products on Etsy, Amazon, and more',
-                    //   isSelected: _selections[4],
-                    //   onChanged: (value) {
-                    //     setState(() {
-                    //       _selections[4] = value!;
-                    //     });
-                    //   },
-                    // ),
+                    SelectableOption(
+                      title: 'Cloth products',
+                      description: 't-shirt,shoes',
+                      isSelected: _selections[2],
+                      onChanged: (value) {
+                        setState(() {
+                          _selections[2] = value!;
+                        });
+                      },
+                    ),
                     const SizedBox(height: 10),
                     SelectableOption(
-                      title: 'I\'m not sure',
+                      title: 'Services',
+                      description: 'Coaching, housekeeping, consulting',
+                      isSelected: _selections[3],
+                      onChanged: (value) {
+                        setState(() {
+                          _selections[3] = value!;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    SelectableOption(
+                      title: 'Print-on-demand products',
+                      description: 'My designs, printed and shipped by a third party',
+                      isSelected: _selections[4],
+                      onChanged: (value) {
+                        setState(() {
+                          _selections[4] = value!;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    SelectableOption(
+                      title: 'I\'ll decide later',
                       description: '',
                       isSelected: _selections[5],
                       onChanged: (value) {
@@ -105,7 +105,7 @@ class _MultiSelectScreenState extends State<MultiSelectScreen> {
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
-                    // Handle Back button press
+                    Navigator.pop(context);
                   },
                   icon: const Icon(Icons.arrow_back),
                   label: const Text(''),
@@ -126,11 +126,11 @@ class _MultiSelectScreenState extends State<MultiSelectScreen> {
                       child: const Text('Skip'),
                     ),
                     const SizedBox(width: 10),
-                     ElevatedButton(
+                        ElevatedButton(
   onPressed: () {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const ThirdScreen()),
+      MaterialPageRoute(builder: (context) => const FourthScreen()),
     );
   },
   child: const Text('Next'),

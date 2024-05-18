@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:virtual_shop/pages/3d_view/3d_screen.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:virtual_shop/pages/3d_view/items_detail.dart';
 
 class MyShopPage extends StatelessWidget {
   final List<Item> items = [
@@ -120,7 +121,7 @@ class Rack extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ThreeDScreen(title: '',),
+                  builder: (context) => const ProductDetailsScreen(),
                 ),
               );
             },

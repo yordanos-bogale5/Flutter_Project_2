@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:virtual_shop/pages/shop_openning/second.dart';
-import 'package:virtual_shop/widget/items_widget.dart';
+import 'package:virtual_shop/pages/shop_openning/first.dart';
 
+import 'package:virtual_shop/widget/items_widget.dart';
 import 'all_shops/shops.dart';
 
 class HomePage extends StatefulWidget {
@@ -111,7 +111,6 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 25),
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: 30,
-
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.search),
@@ -127,47 +126,47 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-           
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  SecondScreen ()),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right:15.0),
-                  child: Image.asset(
-                    'assets/photo_2024-05-17_01-55-14.jpg',
-                    width: 80.0,
-                    height: 100.0,
-                  ),
-                ),
-              ),
-            
-
+               GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SelectionScreen()),
+    );
+  },
+  child: Padding(
+    padding: const EdgeInsets.only(right: 15.0),
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white, // Set background color of container
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blue.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 2,
+            offset: const Offset(0, 1), // changes position of shadow
+          ),
+        ],
+      ),
+      child: const Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text(
+          'Open shop',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+  ),
+)
               ],
             ),
           ),
         ],
+        automaticallyImplyLeading: false, // This line removes the back button icon
       ),
-      // drawer: Drawer(
-      //   child: ListView(
-      //     children: [
-      //       const DrawerHeader(
-      //         child: Text('Drawer Header'),
-      //       ),
-      //       ListTile(
-      //         title: const Text('Item 1'),
-      //         onTap: () {},
-      //       ),
-      //       ListTile(
-      //         title: const Text('Item 2'),
-      //         onTap: () {},
-      //       ),
-      //     ],
-      //   ),
-      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -185,12 +184,13 @@ class _HomePageState extends State<HomePage> {
                     'https://static.vecteezy.com/system/resources/previews/000/692/266/original/sale-promotion-banner-template-vector.jpg',
                     fit: BoxFit.cover,
                   ),
+                  
                   Image.network(
-                    'https://th.bing.com/th/id/OIP.OLA6sjsJrIMpDiL8CXoGnwHaDX?rs=1&pid=ImgDetMain',
+                    'https://static.vecteezy.com/system/resources/previews/004/604/785/original/online-shopping-on-website-and-mobile-application-concept-digital-marketing-shop-and-store-via-smartphone-vector.jpg',
                     fit: BoxFit.cover,
                   ),
                   Image.network(
-                    'https://static.vecteezy.com/system/resources/previews/004/604/785/original/online-shopping-on-website-and-mobile-application-concept-digital-marketing-shop-and-store-via-smartphone-vector.jpg',
+                    'https://static.vecteezy.com/system/resources/previews/000/692/266/original/sale-promotion-banner-template-vector.jpg',
                     fit: BoxFit.cover,
                   ),
                 ],
@@ -203,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                 "Category",
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  fontSize: 22,
+                                    fontSize: 22,
                   color: Color(0xFF808080),
                 ),
               ),
@@ -219,22 +219,22 @@ class _HomePageState extends State<HomePage> {
                       'https://i5.walmartimages.com/asr/af9880b8-702d-4703-99c6-8c9bbbadc03e_1.fedaaa83fff4a4b34a8054ceed7b5c06.jpeg',
                       'Shoes',
                     ),
-                        const SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     _buildShopCategory(
                       'https://ariftibeb.com/cdn/shop/products/IMG_E9859_480x480.jpg?v=1653200020',
                       'Fashion',
                     ),
-                        const SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     _buildShopCategory(
                       'https://assets.wfcdn.com/im/44513477/c_crop_resize_zoom-h624-w900%5Ecompr-r85/2433/243397967/default_name.jpg',
                       'Furniture',
                     ),
-                        const SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     _buildShopCategory(
                       'https://www.classicfootballshirts.co.uk/cdn-cgi/image/fit=pad,q=70,f=webp//pub/media/catalog/product//4/0/4065424487796-1_1.jpg',
-                      'Sport Clothes', 
+                      'Sport Clothes',
                     ),
-                      const SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     _buildShopCategory(
                       'https://ariftibeb.com/cdn/shop/products/IMG_E9859_480x480.jpg?v=1653200020',
                       'Fashion',
@@ -263,68 +263,67 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-     bottomNavigationBar: CurvedNavigationBar(
-  items: const [
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.home, size: 30),
-        Text('Home', style: TextStyle(fontSize: 12)),
-      ],
-    ),
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.shop, size: 30),
-        Text('All Shops', style: TextStyle(fontSize: 12)),
-      ],
-    ),
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.shopping_cart, size: 30),
-        Text('Cart', style: TextStyle(fontSize: 12)),
-      ],
-    ),
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.person, size: 30),
-        Text('Profile', style: TextStyle(fontSize: 12)),
-      ],
-    ),
-  ],
-  onTap: (index) {
-    // Handle navigation based on index
-    switch (index) {
-      case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
-        );
-        break;
-      case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ShopScreen()),
-        );
-        break;
-      case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ShopScreen()),
-        );
-        break;
-      case 3:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ShopScreen()),
-        );
-        break;
-    }
-  },
-),
-
+      bottomNavigationBar: CurvedNavigationBar(
+        items: const [
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.home, size: 30),
+              Text('Home', style: TextStyle(fontSize: 12)),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.shop, size: 30),
+              Text('All Shops', style: TextStyle(fontSize: 12)),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.shopping_cart, size: 30),
+              Text('Cart', style: TextStyle(fontSize: 12)),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.person, size: 30),
+              Text('Profile', style: TextStyle(fontSize: 12)),
+            ],
+          ),
+        ],
+        onTap: (index) {
+          // Handle navigation based on index
+          switch (index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShopScreen()),
+              );
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShopScreen()),
+              );
+              break;
+            case 3:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShopScreen()),
+              );
+              break;
+          }
+        },
+      ),
     );
   }
 }
