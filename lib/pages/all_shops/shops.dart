@@ -8,13 +8,12 @@ class ShopScreen extends StatefulWidget {
 
 class _ShopScreenState extends State<ShopScreen> {
   final List<String> recentlySearched = [
-    'Flutter',
-    'Dart',
-    'Mobile Development',
-    'State Management',
-    'Animations',
-    'Widgets',
-    'Material Design'
+    'Bita Brand',
+    'Gradify',
+    'Clock Store',
+    'ade Wire',
+    'Seli Cosmotics',
+    'Abe Shop'
   ];
 
   final List<String> categories = [
@@ -219,7 +218,7 @@ class _ShopScreenState extends State<ShopScreen> {
                         physics: const NeverScrollableScrollPhysics(),
                         children: List.generate(smallTexts.length, (index) {
                           return Padding(
-                            padding: const EdgeInsets.all(14.0),
+                            padding: const EdgeInsets.all(5.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

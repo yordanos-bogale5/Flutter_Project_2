@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -7,7 +9,7 @@ import 'package:virtual_shop/widget/items_widget.dart';
 import 'all_shops/shops.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+   const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -134,11 +136,11 @@ class _HomePageState extends State<HomePage> {
     );
   },
   child: Padding(
-    padding: const EdgeInsets.only(right: 15.0),
+    padding: const EdgeInsets.only(right:10),
     child: Container(
       decoration: BoxDecoration(
         color: Colors.white, // Set background color of container
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.blue.withOpacity(0.5),
@@ -149,7 +151,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       child: const Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(5.0),
         child: Text(
           'Open shop',
           style: TextStyle(
@@ -198,7 +200,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 10),
             const Padding(
-              padding: EdgeInsets.only(right: 270),
+              padding: EdgeInsets.only(right: 260),
               child: Text(
                 "Category",
                 style: TextStyle(

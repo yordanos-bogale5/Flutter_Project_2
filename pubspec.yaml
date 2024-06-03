@@ -39,6 +39,11 @@ dependencies:
   babylonjs_viewer: ^1.2.0
   webview_flutter: ^2.8.0
   carousel_slider: ^4.2.1
+  flutter_inappwebview: ^6.0.0
+  connectivity_plus: ^6.0.3
+  fluttertoast: ^8.2.5
+  http: ^1.2.1
+  chapa_unofficial: ^0.0.5
 
 
 dev_dependencies:

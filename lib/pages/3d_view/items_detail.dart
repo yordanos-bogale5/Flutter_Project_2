@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_shop/chapa/chapawebview.dart';
 import 'package:virtual_shop/pages/3d_view/options.dart';
 
 
@@ -100,6 +101,41 @@ class ProductDetailsScreen extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         child: Text(
           'See options',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+  ),
+),
+GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ChapaWebView (url: '', fallBackNamedUrl: '', transactionReference: '', amountPaid: '',)),
+    );
+  },
+  child: Padding(
+    padding: const EdgeInsets.only(right: 15.0),
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white, // Set background color of container
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blue.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 2,
+            offset: const Offset(0, 1), // changes position of shadow
+          ),
+        ],
+      ),
+      child: const Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text(
+          'Pay with chapa',
           style: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
