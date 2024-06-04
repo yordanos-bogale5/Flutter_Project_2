@@ -78,7 +78,7 @@ class _ChapaWebViewState extends State<ChapaWebView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chapa Payment'),
+        title: const Text('Chapa Payment'),
       ),
       body: Column(
         children: <Widget>[
@@ -108,7 +108,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => MyHomePage(),
-      '/chapa_webview': (context) => ChapaWebView(
+      '/chapa_webview': (context) => const ChapaWebView(
         url: 'https://chapa.co/pay',
         fallBackNamedUrl: '/fallback',
         transactionReference: 'TX123456789',
@@ -124,7 +124,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chapa Payment Example'),
+        title: const Text('Chapa Payment Example'),
       ),
       body: Center(
         child: ElevatedButton(
@@ -134,7 +134,7 @@ class MyHomePage extends StatelessWidget {
               '/chapa_webview',
             );
           },
-          child: Text('Pay with Chapa'),
+          child: const Text('Pay with Chapa'),
         ),
       ),
     );
@@ -148,7 +148,7 @@ class FallBackPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment Status'),
+        title: const Text('Payment Status'),
       ),
       body: Center(
         child: Text(arguments['message']),

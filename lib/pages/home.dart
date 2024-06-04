@@ -3,13 +3,16 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:virtual_shop/pages/3d_view/new_way.dart';
+import 'package:virtual_shop/pages/shop_openning/auth.dart';
+
 import 'package:virtual_shop/pages/shop_openning/first.dart';
 
 import 'package:virtual_shop/widget/items_widget.dart';
 import 'all_shops/shops.dart';
 
 class HomePage extends StatefulWidget {
-   const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -120,54 +123,58 @@ class _HomePageState extends State<HomePage> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      contentPadding:
-                          const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 8),
                     ),
                     onSubmitted: (value) {
                       print('Search query: $value');
                     },
                   ),
                 ),
-               GestureDetector(
-  onTap: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SelectionScreen()),
-    );
-  },
-  child: Padding(
-    padding: const EdgeInsets.only(right:10),
-    child: Container(
-      decoration: BoxDecoration(
-        color: Colors.white, // Set background color of container
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.blue.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 2,
-            offset: const Offset(0, 1), // changes position of shadow
-          ),
-        ],
-      ),
-      child: const Padding(
-        padding: EdgeInsets.all(5.0),
-        child: Text(
-          'Open shop',
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    ),
-  ),
-)
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color:
+                            Colors.white, // Set background color of container
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.blue.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 2,
+                            offset: const Offset(
+                                0, 1), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child: Text(
+                          'Open shop',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
         ],
-        automaticallyImplyLeading: false, // This line removes the back button icon
+        automaticallyImplyLeading:
+            false, // This line removes the back button icon
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -186,7 +193,6 @@ class _HomePageState extends State<HomePage> {
                     'https://static.vecteezy.com/system/resources/previews/000/692/266/original/sale-promotion-banner-template-vector.jpg',
                     fit: BoxFit.cover,
                   ),
-                  
                   Image.network(
                     'https://static.vecteezy.com/system/resources/previews/004/604/785/original/online-shopping-on-website-and-mobile-application-concept-digital-marketing-shop-and-store-via-smartphone-vector.jpg',
                     fit: BoxFit.cover,
@@ -205,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                 "Category",
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                                    fontSize: 22,
+                  fontSize: 22,
                   color: Color(0xFF808080),
                 ),
               ),

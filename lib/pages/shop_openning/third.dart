@@ -103,40 +103,50 @@ class _ThirdScreenState extends State<ThirdScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text(''),
-                ),
-                Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle Skip All button press
-                      },
-                      child: const Text('Skip All'),
-                    ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle Skip button press
-                      },
-                      child: const Text('Skip'),
-                    ),
-                    const SizedBox(width: 10),
-                        ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const FourthScreen()),
-    );
-  },
-  child: const Text('Next'),
+                Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const FourthScreen()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white, backgroundColor: Colors.black, // Foreground (text) color
+        minimumSize: Size(150, 50), // Increased width and height
+      ),
+      child: const Text('Next'),
+    ),
+    const SizedBox(height: 10),
+    Row(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            // Handle Skip All button press
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black, backgroundColor: Colors.white, // Foreground (text) color
+            minimumSize: Size(150, 50), // Increased width and height
+          ),
+          child: const Text('Skip All'),
+        ),
+        const SizedBox(width: 10),
+        ElevatedButton(
+          onPressed: () {
+            // Handle Skip button press
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black, backgroundColor: Colors.white, // Foreground (text) color
+            minimumSize: Size(150, 50), // Increased width and height
+          ),
+          child: const Text('Skip'),
+        ),
+      ],
+    ),
+  ],
 ),
-                  ],
-                ),
               ],
             ),
           ],

@@ -50,26 +50,49 @@ class _SelectionScreenState extends State<SelectionScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle Skip All button press
-                  },
-                  child: const Text('Skip All'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle Skip button press
-                  },
-                  child: const Text('Skip'),
-                ),
-                 ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MultiSelectScreen()),
-    );
-  },
-  child: const Text('Next'),
+              Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MultiSelectScreen()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white, backgroundColor: Colors.black, // Foreground (text) color
+        minimumSize: Size(150, 50), // Increased width and height
+      ),
+      child: const Text('Next'),
+    ),
+    const SizedBox(height: 10),
+    Row(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            // Handle Skip All button press
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black, backgroundColor: Colors.white, // Foreground (text) color
+            minimumSize: Size(150, 50), // Increased width and height
+          ),
+          child: const Text('Skip All'),
+        ),
+        const SizedBox(width: 10),
+        ElevatedButton(
+          onPressed: () {
+            // Handle Skip button press
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black, backgroundColor: Colors.white, // Foreground (text) color
+            minimumSize: Size(150, 50), // Increased width and height
+          ),
+          child: const Text('Skip'),
+        ),
+      ],
+    ),
+  ],
 ),
               ],
             ),

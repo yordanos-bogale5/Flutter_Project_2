@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:virtual_shop/pages/shop_openning/auth.dart';
 
@@ -54,13 +56,13 @@ class _FourthScreenState extends State<FourthScreen> {
                         border: OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle Submit button press
-                      },
-                      child: const Text('Submit'),
-                    ),
+                    // const SizedBox(height: 20),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     // Handle Submit button press
+                    //   },
+                    //   child: const Text('Submit'),
+                    // ),
                   ],
                 ),
               ),
@@ -68,21 +70,49 @@ class _FourthScreenState extends State<FourthScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text(''),
-                ),
-              ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const FifthScreen()),
-    );
-  },
-  child: const Text('Next'),
+                Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white, backgroundColor: Colors.black, // Foreground (text) color
+        minimumSize: Size(150, 50), // Increased width and height
+      ),
+      child: const Text('Next'),
+    ),
+    const SizedBox(height: 10),
+    Row(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            // Handle Skip All button press
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black, backgroundColor: Colors.white, // Foreground (text) color
+            minimumSize: Size(150, 50), // Increased width and height
+          ),
+          child: const Text('Skip All'),
+        ),
+        const SizedBox(width: 10),
+        ElevatedButton(
+          onPressed: () {
+            // Handle Skip button press
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black, backgroundColor: Colors.white, // Foreground (text) color
+            minimumSize: Size(150, 50), // Increased width and height
+          ),
+          child: const Text('Skip'),
+        ),
+      ],
+    ),
+  ],
 ),
               ],
             ),

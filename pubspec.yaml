@@ -44,6 +44,11 @@ dependencies:
   fluttertoast: ^8.2.5
   http: ^1.2.1
   chapa_unofficial: ^0.0.5
+  flutter_form_builder: ^9.2.1
+  shared_preferences: ^2.2.3
+  form_builder_validators: ^9.1.0
+  file_picker: ^8.0.3
+  mongo_dart: ^0.10.2
 
 
 dev_dependencies:
