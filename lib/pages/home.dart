@@ -3,10 +3,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:virtual_shop/pages/3d_view/new_way.dart';
-import 'package:virtual_shop/pages/shop_openning/auth.dart';
-
 import 'package:virtual_shop/pages/shop_openning/first.dart';
+//import 'package:virtual_shop/profile/profile_screen.dart';
 
 import 'package:virtual_shop/widget/items_widget.dart';
 import 'all_shops/shops.dart';
@@ -136,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
+                          builder: (context) => const SelectionScreen()),
                     );
                   },
                   child: Padding(
@@ -324,10 +322,10 @@ class _HomePageState extends State<HomePage> {
               );
               break;
             case 3:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ShopScreen()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) =>  ProfileScreen()),
+              // );
               break;
           }
         },

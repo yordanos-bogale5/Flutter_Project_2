@@ -1,8 +1,10 @@
 // ignore_for_file: use_build_context_synchronously, avoid_print
 
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:image_picker/image_picker.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -13,9 +15,36 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  File? _selectedFile;
   bool isLoading = false;
+  bool isFileLoading = false;
+
+  Future<void> _pickFile() async {
+    setState(() {
+      isFileLoading = true;
+    });
+
+    try {
+      final pickedFile =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        setState(() {
+          _selectedFile = File(pickedFile.path);
+        });
+      }
+    } catch (error) {
+      print('File picking failed: $error');
+    } finally {
+      setState(() {
+        isFileLoading = false;
+      });
+    }
+  }
 
   void _submit() async {
     final isValid = _formKey.currentState!.validate();
@@ -31,34 +60,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
 
     try {
-      final response = await http.post(
-        Uri.parse('https://your-backend-api.com/signup'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{
-          'email': _emailController.text,
-          'password': _passwordController.text,
-        }),
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse(
+            'http://192.168.137.1:8000/users/signup'), // Replace with your local IP address
       );
+      request.fields['first_name'] = _firstNameController.text;
+      request.fields['last_name'] = _lastNameController.text;
+      request.fields['email'] = _emailController.text;
+      request.fields['password'] = _passwordController.text;
+      request.fields['phone'] = _phoneController.text;
+
+      if (_selectedFile != null) {
+        request.files.add(await http.MultipartFile.fromPath(
+          'file',
+          _selectedFile!.path,
+        ));
+      }
+
+      final response = await request.send();
+      final responseBody = await response.stream.bytesToString();
 
       if (response.statusCode == 201) {
         print('User registered successfully!');
-        Navigator.of(context).pop();
+        if (context.mounted) {
+          Navigator.of(context).pop();
+        }
       } else {
-        final data = jsonDecode(response.body);
+        final data = jsonDecode(responseBody);
         print('Registration failed: ${data['message']}');
-        ScaffoldMessenger.of(context).clearSnackBars();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(data['message']),
-        ));
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(data['message']),
+          ));
+        }
       }
     } catch (error) {
       print('Registration failed: $error');
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: const Text('Registration failed. Please try again later.'),
-      ));
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Registration failed. Please try again later.'),
+        ));
+      }
     } finally {
       setState(() {
         isLoading = false;
@@ -89,7 +134,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                
                 const Text(
                   "Sign Up",
                   style: TextStyle(
@@ -98,6 +142,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 40),
+                TextFormField(
+                  controller: _firstNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'First Name',
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter your first name.';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: _lastNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Last Name',
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter your last name.';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
@@ -130,7 +204,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: _phoneController,
+                  decoration: const InputDecoration(
+                    labelText: 'Phone Number',
+                    prefixIcon: Icon(Icons.phone),
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter your phone number.';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                if (_selectedFile != null)
+                  Image.file(_selectedFile!, height: 100, width: 100),
+                if (isFileLoading) const CircularProgressIndicator(),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _pickFile,
+                  child: const Text('Select File'),
+                ),
+                const SizedBox(height: 20),
                 SizedBox(
                   width: double.infinity,
                   height: 50,

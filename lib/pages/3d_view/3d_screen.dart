@@ -46,7 +46,7 @@ class _ThreeDScreenState extends State<ThreeDScreen> {
                   viewer.sceneManager.camera.useAutoRotationBehavior = !viewer.sceneManager.camera.useAutoRotationBehavior;
                 }
               ''',
-              src: 'https://models.babylonjs.com/boombox.glb',
+              src: 'https://models.babylonjs.com/shoes.glb',
             ),
           ),
           ElevatedButton(
