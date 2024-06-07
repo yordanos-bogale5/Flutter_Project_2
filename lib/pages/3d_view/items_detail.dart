@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_shop/chapa/chapawebview.dart';
-import 'package:virtual_shop/pages/3d_view/options.dart';
+import 'package:virtual_shop/pages/3d_view/3d_screen.dart';
+
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  final String imageUrl;
+  final String name;
+  final int rating;
+  final String price;
+  final String modelPath;
+
+  const ProductDetailsScreen({
+    Key? key,
+    required this.imageUrl,
+    required this.name,
+    required this.rating,
+    required this.price,
+    required this.modelPath,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,56 +29,29 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image from network
             Center(
               child: Image.network(
-                'https://2.bp.blogspot.com/-t1JFZziJ1Ds/WknqOuPShhI/AAAAAAAAAns/Syqa5VtQfo4fJnKQxaNXEGAMgHLetOaVQCLcBGAs/s400/10748015.jpg',
+                imageUrl,
                 width: 150,
                 height: 150,
                 fit: BoxFit.cover,
               ),
             ),
             const SizedBox(height: 20),
-            // Product details
-            // const Text(
-            //   'HP 14 Laptop, Intel Celeron N4020, 4 GB RAM, 64 GB Storage, 14-inch Micro-edge HD Display, Windows 11 Home, Thin & Portable, 4K Graphics, One Year of Microsoft 365 (14-dq0040nr, Snowflake White)',
-            //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
-            // ),
-            // const SizedBox(height: 10),
-            // const Text(
-            //   'Options:',
-            //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            // ),
-            // const SizedBox(height: 10),
-            // const Text(
-            //   '7 capacities (link)',
-            //   style: TextStyle(fontSize: 14, color: Colors.blue),
-            // ),
-            const SizedBox(height: 10),
-            const Row(
+            Row(
               children: [
-                Icon(Icons.star, color: Colors.amber),
-                SizedBox(width: 5),
+                const Icon(Icons.star, color: Colors.amber),
+                const SizedBox(width: 5),
                 Text(
-                  '4.9 out of 5 stars',
-                  style: TextStyle(fontSize: 14),
+                  '$rating out of 5 stars',
+                  style: const TextStyle(fontSize: 14),
                 ),
               ],
             ),
             const SizedBox(height: 10),
-            const Text(
-              '20+ bought in past month',
-              style: TextStyle(fontSize: 14),
-            ),
-            const SizedBox(height: 10),
-            // const Text(
-            //   'No featured offers available',
-            //   style: TextStyle(fontSize: 14),
-            // ),
-            const SizedBox(height: 10),
-            const Text(
-              'Price: 27000 birr ',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Text(
+              'Price: $price',
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             Row(
@@ -75,7 +61,9 @@ class ProductDetailsScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ViewOption()),
+                      MaterialPageRoute(
+                        builder: (context) => ThreeDScreen(modelPath: modelPath),
+                      ),
                     );
                   },
                   child: Padding(
@@ -96,7 +84,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       child: const Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
-                          'See options',
+                          'View in 3D',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.bold,

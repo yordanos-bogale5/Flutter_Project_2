@@ -285,13 +285,13 @@ class _HomePageState extends State<HomePage> {
               Text('All Shops', style: TextStyle(fontSize: 12)),
             ],
           ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.shopping_cart, size: 30),
-              Text('Cart', style: TextStyle(fontSize: 12)),
-            ],
-          ),
+          // Column(
+          //   mainAxisSize: MainAxisSize.min,
+          //   children: [
+          //     Icon(Icons.shopping_cart, size: 30),
+          //     Text('Cart', style: TextStyle(fontSize: 12)),
+          //   ],
+          // ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [

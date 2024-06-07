@@ -58,7 +58,7 @@ class ViewOption extends StatelessWidget {
   onTap: () {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ThreeDScreen(title: '',)),
+      MaterialPageRoute(builder: (context) => const ThreeDScreen(modelPath: '',)),
     );
   },
   child: Padding(

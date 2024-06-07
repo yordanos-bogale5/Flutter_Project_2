@@ -85,8 +85,12 @@ flutter:
     - assets/photo_2024-05-17_01-55-14.jpg
     - assets/laptop.glb
     - assets/joyestick.glb
+    - assets/pc.glb
     - assets/shoes.glb
     - assets/mobile.glb
+    - assets/speaker.glb
+    - assets/tablet.glb
+    - assets/tv.glb
     - assets/photo_2024-05-17_13-00-18.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
